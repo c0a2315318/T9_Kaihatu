@@ -2,7 +2,7 @@
   text-align: center;
   border: 5px solid #000;
   border-radius: 30px;
-  padding: 10px;
+  padding: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   width: 375px; /* iPhone width */
@@ -15,6 +15,19 @@
 .App-content {
   height: 100%;
   overflow-y: scroll; /* 内部コンテンツのスクロールを有効にする */
+  scroll-snap-type: y mandatory; /* スクロールスナップを有効にする */
+  -ms-overflow-style: none;  /* IEとEdge用のスクロールバー非表示 */
+  scrollbar-width: none;  /* Firefox用のスクロールバー非表示 */
+}
+
+.App-content::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera用のスクロールバー非表示 */
+}
+
+.App-content > div {
+  height: 100%;
+  scroll-snap-align: start; /* 各コンテンツをフルスクリーンにする */
+  position: relative;
 }
 
 .App-logo {
@@ -46,23 +59,15 @@
   border-radius: 10px;
 }
 
-@media only screen and (max-width: 600px) {
-  .App {
-    text-align: center;
-    border: 5px solid #000;
-    border-radius: 30px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    width: 375px; /* iPhone width */
-    height: 667px; /* iPhone height */
-    margin: 20px auto;
-    background-color: #fff;
-    overflow: hidden; /* 枠自体のスクロールを無効にする */
-  }
-
-  .App-content {
-    height: 100%;
-    overflow-y: scroll; /* 内部コンテンツのスクロールを有効にする */
-  }
+.title {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
+  text-align: center;
 }
