@@ -29,6 +29,24 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div id="searchContainer">
+      <button type="button" onclick="location.href='tourist_search.html'">観光地検索はコチラ</button>
+      <button type="button" onclick="location.href='preferences'">トップページに戻る</button>
+    </div>
+    <script>
+      function search() {
+        const query = document.getElementById('searchBox').value;
+        alert('検索結果 : ' + query);
+      }
+    </script>
+    <style>
+      #searchContainer {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    </style>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

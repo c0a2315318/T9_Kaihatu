@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>観光地検索</title>
+</head>
+<body>
+    <div id="searchContainer">
+        <input type="text" id="searchBox" placeholder="検索...">
+        <button type="button" onclick="search()">検索</button>
+    </div>
+    <div id="backButtonContainer">
+        <button type="button" onclick="location.href='index.html'">トップページに戻る</button>
+    </div>
+    <div id="resultContainer" style="display: none;">
+        <h2 id="placeName"></h2>
+        <div id="spotInfo" style="background-color: #f0f0f0; padding: 10px; margin: 10px auto; width: 400px; text-align: left;">
+            <p><strong>カテゴリ:</strong> <span id="placeCategory"></span></p>
+            <p><strong>住所:</strong> <span id="placeAddress"></span></p>
+            <p><strong>営業時間:</strong> <span id="placeHours"></span></p>
+            <p><strong>料金:</strong> <span id="placeFee"></span></p>
+        </div>
+        <p id="placeDescription"></p>
+        <img id="placeImage" src="" alt="観光地の写真" style="max-width: 100%;">
+    </div>
+    <script>
+        const places = {
+            '高尾山': {
+                name: '高尾山',
+                category: '山',
+                address: '東京都八王子市高尾町',
+                hours: '【ケーブルカー】8:00から運行(最終時刻は月によって異なる)',
+                fee: '【ケーブルカー、リフト運賃(片道)】[大人(中学生以上)]490円[小人(3歳以上)]250円【ケーブルカー、リフト運賃(往復)】[大人(中学生以上)]950円[小人(3歳以上)]470円',
+                description: '高尾山（たかおさん）は、東京都八王子市にある標高599メートル（m）の山。明治の森高尾国定公園及び東京都立高尾陣場自然公園に位置。東京都心から近く、年間を通じて多くの観光客や登山者が訪れる。古くから修験道の霊山とされた。',
+                imageUrl: 'https://www.gotokyo.org/jp/story/walks-and-tours/mt-takao/images/wt_takaosan_main.jpg'
+            },
+            '高尾山トリックアート美術館': {
+                name: '高尾山トリックアート美術館',
+                category: '美術館',
+                address: '東京都八王子市高尾町1786',
+                hours: '10:00 - 18:00',
+                fee: '大人1,400円、中高生1,060円、小学生760円、幼児550円',
+                description: '高尾山トリックアート美術館は1996年4月、東京の西、高尾山の麓にオープンしました。だまし絵の歴史は古くは約2000年前に遡り、そしてほぼルネッサンス期に技術的に確立されたと言われています。高尾山トリックアート美術館のコンセプトはまさしくその当時のだまし絵をトリックアートで再現すること、「あたかもそこに本物が存在するが如く」をテーマとしています。豊な自然に囲まれた高尾山の麓、京王線高尾山口駅の目の前に高尾山トリックアート美術館はあります。新緑、紅葉と四季折々に様々な姿を見せてくれる高尾山の豊な自然を満喫しながら、今までの既成概念を捨てて高尾山トリックアート美術館をご堪能下さい。きっと新たな発見が皆様をお待ちしています。',
+                imageUrl: 'https://s3-ap-northeast-1.amazonaws.com/thegate/2020/12/03/13/34/55/Takao%20Trick%20Art%20Museum.jpg'
+            },
+            '京王高尾山温泉': {
+                name: '京王高尾山温泉',
+                category: '温泉',
+                address: '	東京都八王子市高尾町2229-7',
+                hours: '	8:00-22:30',
+                fee: '【平日】[大人(中学生以上)]1,100円(税込)[子供(4歳-小学生)]550円(税込)【土日祝/繁忙期料金】[大人(中学生以上)]1,300円(税込)[子供(4歳-小学生)]650円(税込)',
+                description: '周囲の景色に溶け込む入母屋の和風の建物に入るとすぐに受付があります。思いついて手ぶらで来ちゃったという人でもフェイスタオルを販売（バスタオルはレンタル）しているので心配無用です。荷物が多い登山客用に、大型のロッカーも多く設置している使い勝手のよさもポイントのひとつ。2階は脱衣所とお風呂のエリアになっており、ゆったりとした空間のなかで温泉を楽しめます。このなかでも人気No1はやはり「天然温泉 露天岩風呂」。地下約1000mからこんこんと湧き出る大地の恵みはアルカリ性のやさしいお湯。',
+                imageUrl: 'https://www.gotokyo.org/en/spot/693/images/693_0448_3_1400x1100.jpg'
+            }
+        };
+
+        function search() {
+            const query = document.getElementById('searchBox').value;
+            const placeData = places[query];
+            if (placeData) {
+                document.getElementById('placeName').textContent = placeData.name;
+                document.getElementById('placeCategory').textContent = placeData.category;
+                document.getElementById('placeAddress').textContent = placeData.address;
+                document.getElementById('placeHours').textContent = placeData.hours;
+                document.getElementById('placeFee').textContent = placeData.fee;
+                document.getElementById('placeDescription').textContent = placeData.description;
+                document.getElementById('placeImage').src = placeData.imageUrl;
+                document.getElementById('resultContainer').style.display = 'block';
+            } else {
+                alert('検索結果が見つかりません。');
+            }
+        }
+    </script>
+    <style>
+        #searchContainer {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #backButtonContainer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        #resultContainer {
+            margin-top: 100px;
+            text-align: center;
+        }
+        #placeDescription {
+            width: 700px; /* 固定幅 */
+            margin: 0 auto; /* 中央揃え */
+        }
+        #placeImage {
+            width: 1000px; /* 固定幅 */
+            height: auto; /* アスペクト比を維持 */
+        }
+    </style>
+</body>
+</html>
