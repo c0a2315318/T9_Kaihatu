@@ -1,31 +1,20 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-// 各選択項目に対応する複数の画像のURLとタイトルを用意します
 const images = {
   "グルメ": [
-    { src: "/images/g1.jpg", title: "ぶーる・ぶーる・ぶらんじぇり", subtitle: "パン、ベーグル" },
-    { src: "/images/g2.jpg", title: "グルメ2", subtitle: "サブタイトル2" },
-    { src: "/images/g3.jpg", title: "グルメ3", subtitle: "サブタイトル3" },
-    { src: "/images/g4.jpg", title: "グルメ4", subtitle: "サブタイトル4" },
-    { src: "/images/g5.jpg", title: "グルメ5", subtitle: "サブタイトル5" }
+    { src: "/images/g1.jpg", title: "ぶーる・ぶーる・ぶらんじぇり", subtitle: "パン、ベーグル", set: "g1" },
+    { src: "/images/g2.jpg", title: "みんみんラーメン", subtitle: "ラーメン", set: "g2" }
   ],
   "歴史、文化": [
-    { src: "/images/history1.jpg", title: "歴史1", subtitle: "サブタイトル1" },
-    { src: "/images/history2.jpg", title: "歴史2", subtitle: "サブタイトル2" },
-    { src: "/images/history3.jpg", title: "歴史3", subtitle: "サブタイトル3" },
-    { src: "/images/history4.jpg", title: "歴史4", subtitle: "サブタイトル4" },
-    { src: "/images/history5.jpg", title: "歴史5", subtitle: "サブタイトル5" },
-    { src: "/images/history6.jpg", title: "歴史6", subtitle: "サブタイトル6" },
-    { src: "/images/history7.jpg", title: "歴史7", subtitle: "サブタイトル7" },
-    { src: "/images/history8.jpg", title: "歴史8", subtitle: "サブタイトル8" },
-    { src: "/images/history9.jpg", title: "歴史9", subtitle: "サブタイトル9" },
-    { src: "/images/history10.jpg", title: "歴史10", subtitle: "サブタイトル10" }
+    { src: "/images/history1.jpg", title: "歴史1", subtitle: "サブタイトル1", set: "history1" },
+    { src: "/images/history2.jpg", title: "歴史2", subtitle: "サブタイトル2", set: "history2" },
+    // 他の画像も同様に追加
   ],
   "自然": [
-    { src: "/images/nature1.jpg", title: "自然1", subtitle: "サブタイトル1" },
-    { src: "/images/nature2.jpg", title: "自然2", subtitle: "サブタイトル2" },
-    { src: "/images/nature3.jpg", title: "自然3", subtitle: "サブタイトル3" }
+    { src: "/images/nature1.jpg", title: "自然1", subtitle: "サブタイトル1", set: "nature1" },
+    { src: "/images/nature2.jpg", title: "自然2", subtitle: "サブタイトル2", set: "nature2" },
+    // 他の画像も同様に追加
   ],
   // 他のジャンルも同様に追加
 };
