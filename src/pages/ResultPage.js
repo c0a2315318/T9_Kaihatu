@@ -1,10 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // 各選択項目に対応する複数の画像のURLとタイトルを用意します
 const images = {
   "グルメ": [
-    { src: "/images/g1.jpg", title: "グルメ1", subtitle: "サブタイトル1" },
+    { src: "/images/g1.jpg", title: "ぶーる・ぶーる・ぶらんじぇり", subtitle: "パン、ベーグル" },
     { src: "/images/g2.jpg", title: "グルメ2", subtitle: "サブタイトル2" },
     { src: "/images/g3.jpg", title: "グルメ3", subtitle: "サブタイトル3" },
     { src: "/images/g4.jpg", title: "グルメ4", subtitle: "サブタイトル4" },
@@ -27,27 +27,17 @@ const images = {
     { src: "/images/nature2.jpg", title: "自然2", subtitle: "サブタイトル2" },
     { src: "/images/nature3.jpg", title: "自然3", subtitle: "サブタイトル3" }
   ],
-  "ショッピング": [
-    { src: "/images/shopping1.jpg", title: "ショッピング1", subtitle: "サブタイトル1" },
-    { src: "/images/shopping2.jpg", title: "ショッピング2", subtitle: "サブタイトル2" }
-  ],
-  "スポーツ": [
-    { src: "/images/sports1.jpg", title: "スポーツ1", subtitle: "サブタイトル1" },
-    { src: "/images/sports2.jpg", title: "スポーツ2", subtitle: "サブタイトル2" }
-  ],
-  "居酒屋": [
-    { src: "/images/izakaya1.jpg", title: "居酒屋1", subtitle: "サブタイトル1" },
-    { src: "/images/izakaya2.jpg", title: "居酒屋2", subtitle: "サブタイトル2" }
-  ],
-  "温泉": [
-    { src: "/images/onsen1.jpg", title: "温泉1", subtitle: "サブタイトル1" },
-    { src: "/images/onsen2.jpg", title: "温泉2", subtitle: "サブタイトル2" }
-  ]
+  // 他のジャンルも同様に追加
 };
 
 const ResultPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { selectedPreferences } = location.state || { selectedPreferences: [] };
+
+  const handleClick = (image) => {
+    navigate("/details", { state: { image } });
+  };
 
   return (
     <div className="App-content">
@@ -59,8 +49,9 @@ const ResultPage = () => {
                 src={image.src}
                 alt={genre}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                onClick={() => handleClick(image)}
               />
-              <div className="title">
+              <div className="result-title">
                 <h2>{image.title}</h2>
                 <p>{image.subtitle}</p>
               </div>
