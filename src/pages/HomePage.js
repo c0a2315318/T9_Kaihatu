@@ -11,9 +11,10 @@ const HomePage = () => {
 
   return (
     <div className="dialog">
-      <h2>Basic dialog title</h2>
+      <h2>あなたはこのサービスに</h2>
+      <h2>同意しますか？</h2>
       <div className="buttons">
-        <button onClick={() => alert("同意しないが選ばれました")}>同意しない</button>
+        <button onClick={() => alert("ばかやろう")}>同意しない</button>
         <button onClick={handleAgree}>同意する</button>
       </div>
     </div>
